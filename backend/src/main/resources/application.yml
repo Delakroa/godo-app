@@ -9,3 +9,6 @@ spring:
     init:
       mode: always
       continue-on-error: true
+  docker:
+    compose:
+      enabled: false
