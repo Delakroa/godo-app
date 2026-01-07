@@ -46,3 +46,15 @@ spotless {
 tasks.withType<Test> {
     useJUnitPlatform()
 }
+
+tasks.register<Copy>("install-git-hooks") {
+    description = "Installs git hooks."
+    group = JavaBasePlugin.VERIFICATION_GROUP
+
+    from(layout.projectDirectory.dir("../.githooks"))
+    into(layout.projectDirectory.dir("../.git/hooks"))
+
+    filePermissions {
+        unix("0755")
+    }
+}
